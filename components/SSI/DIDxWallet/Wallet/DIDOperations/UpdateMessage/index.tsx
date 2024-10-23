@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import { toast } from 'react-toastify'
 import * as tyron from 'tyron'
-import { SortableElement, SortableContainer } from 'react-sortable-hoc'
+// import { SortableElement, SortableContainer } from 'react-sortable-hoc'
 import { arrayMoveImmutable } from 'array-move'
 import stylesDark from './styles.module.scss'
 import stylesLight from './styleslight.module.scss'
@@ -60,9 +60,9 @@ function Component({
     const ToDoList = ({ items }) => {
         return (
             <div>
-                {items.map((x, i) => (
+                {/* {items.map((x, i) => (
                     <SortableItem val={x} index={i} key={x.id} />
-                ))}
+                ))} */}
             </div>
         )
     }
@@ -74,8 +74,8 @@ function Component({
         setTotalAddService(newArr)
     }
 
-    const SortableItem = SortableElement(ToDoItem)
-    const SortableList = SortableContainer(ToDoList)
+    // const SortableItem = SortableElement(ToDoItem)
+    // const SortableList = SortableContainer(ToDoList)
 
     const saveOrder = () => {
         try {
@@ -185,10 +185,10 @@ function Component({
                             'icon to reorder the links before submitting the transaction.'
                         )}
                     </div>
-                    <SortableList
+                    {/* <SortableList
                         items={totalAddService}
                         onSortEnd={onSortEnd}
-                    />
+                    /> */}
                 </>
             ) : (
                 <></>

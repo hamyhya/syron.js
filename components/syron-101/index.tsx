@@ -434,7 +434,7 @@ function Component() {
             <div className={styles.container}>
                 {walletConnected && (
                     <>
-                        {sdb ? (
+                        {/* {sdb ? ( */}
                             <div className={styles.boxWrapper}>
                                 <p className={styles.boxTitle}>
                                     Your Safety Deposit ₿ox
@@ -593,11 +593,11 @@ function Component() {
                                     <div className={styles.txt}>redeem btc</div>
                                 </button>
                             </div>
-                        ) : (
+                        {/* ) : (
                             <div className={styles.boxWrapper}>
                                 Loading your Safety Deposit ₿ox...
                             </div>
-                        )}
+                        )} */}
                     </>
                 )}
 

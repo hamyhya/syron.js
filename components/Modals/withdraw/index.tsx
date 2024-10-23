@@ -15,6 +15,9 @@ import c2 from '../../../src/assets/icons/checkpoint_2_dark.svg'
 import c3 from '../../../src/assets/icons/checkpoint_3_dark.svg'
 import cs from '../../../src/assets/icons/checkpoint_selected_dark.svg'
 import Close from '../../../src/assets/icons/ic_cross_black.svg'
+import { BoxInput } from '../../syron-102/input'
+import { VaultPair } from '../../../src/types/vault'
+import Big from 'big.js'
 
 type Prop = {
     show: boolean
@@ -23,9 +26,31 @@ type Prop = {
 
 var ThisModal: React.FC<Prop> = function ({ show, onClose }) {
     const { t } = useTranslation()
+    
+    const _0 = Big(0)
+    const start_pair = [
+        {
+            value: _0,
+            meta: {
+                name: 'Bitcoin',
+                symbol: 'BTC',
+                decimals: 8,
+            },
+        },
+        {
+            value: _0,
+            meta: {
+                name: 'Syron USD',
+                symbol: 'SUSD',
+                decimals: 8,
+            },
+        },
+    ]
 
     const [active, setActive] = useState(0)
     const [checkedStep, setCheckedStep] = useState(Array())
+    const [vault_pair, setPair] = React.useState<VaultPair[]>(start_pair)
+    const [selectedIndex, setSelectedIndex] = React.useState(0)
 
     const menuActive = (id) => {
         setCheckedStep([...checkedStep, active])
@@ -58,16 +83,39 @@ var ThisModal: React.FC<Prop> = function ({ show, onClose }) {
                             />
                         </div>
                         <div className={styles.headerTxt}>
-                            <Image
+                            {/* <Image
                                 alt="power-ico"
                                 src={PowerIcon}
                                 width={30}
                                 height={30}
-                            />
+                            /> */}
                             {t('Withdraw SYRON')}
                         </div>
+                        <div>
+                            <BoxInput
+                                value={vault_pair[0].value}
+                                token={vault_pair[0].meta}
+                                disabled={false}
+                                onSelect={() => {}}
+                                onInput={(e) => console.log("input", e)}
+                                onMax={() => {}}
+                                onSwap={() => {}}
+                            />
+                        </div>
+                        <div className={styles.btnConfirmWrapper}>
+                            <div
+                                className={styles.btnConfirm}
+                                // onClick={
+                                //     handleButtonClick
+                                // }
+                                // disabled={disabled}
+                            >
+                                <div className={styles.txt}>CONFIRM</div>
+                            </div>
+                        </div>
                     </div>
-                    <div className={styles.contentWrapper}>
+                    
+                    {/* <div className={styles.contentWrapper}>
                         <div className={styles.rowWrapper}>
                             <div
                                 onClick={() => menuActive(1)}
@@ -307,7 +355,7 @@ var ThisModal: React.FC<Prop> = function ({ show, onClose }) {
                                 )}
                             </div>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </Modal>
